@@ -29,8 +29,8 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-    int length = array.length;
-        return array[length-1];
+        int length = array.length;
+        return array[length - 1];
     }
 
     /**
@@ -39,7 +39,7 @@ public class StringArrayUtils {
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
         int length = array.length;
-        return array[length -2];
+        return array[length - 2];
     }
 
     /**
@@ -48,12 +48,12 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-    for (String s: array) {
-        if (s == value) {
-            return true;
+        for (String s : array) {
+            if (s == value) {
+                return true;
+            }
         }
-    }
-    return false;
+        return false;
     }
 
     /**
@@ -77,46 +77,14 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPalindromic(String[] array) {
 
-        for (int i=0; i<array.length/2; i++){
-            if(!array[i].equals(array[array.length-1-i])){
+        for (int i = 0; i < array.length / 2; i++) {
+            if (!array[i].equals(array[array.length - 1 - i])) {
                 return false;
             }
         }
         return true;
     }
 
-//        String revArray[] = new String[0];
-//        int strLength = array.length;
-//        int count =0;
-//
-//        for (int i =0 ; i<(strLength-1)/2; i++){
-//            if (array[i] == revArray[strLength-1]){
-//                     count = count + 1;
-//            }
-//            else{
-//                count = 0;
-//                break;
-//            }
-//        }
-//        if (count > 0)
-//            return true;
-//            else
-//                return false;
-        
-//        for (String s : array){
-//
-//        }
-//        List<String> list = Arrays.asList(array);
-//        // Reversing the list using Collections.reverse() method
-//        Collections.reverse(list);
-//        // Converting list back to Array
-//        String[] reversedArray = list.toArray(array);
-//
-//        if(reversedArray == array)
-//            return true;
-//        else
-//        return false;
-//    }
 
     /**
      * @param array array of String objects
@@ -124,12 +92,12 @@ public class StringArrayUtils {
      */ // TODO
     public static boolean isPangramic(String[] array) {
 
-        int arrayCount=0;
-        int charCount=0;
-        int found=0;
-        int charValue='a';
+        int arrayCount = 0;
+        int charCount = 0;
+        int found = 0;
+        int charValue = 'a';
         String temp;
-        while(charValue<='z') {
+        while (charValue <= 'z') {
             while (arrayCount < array.length) {
                 temp = array[arrayCount].toLowerCase();
                 while (charCount < temp.length()) {
@@ -158,20 +126,13 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        int numOfOcc=0;
-        for(int i= 0; i< array.length; i++){
-            if (array[i] == value){
-                numOfOcc = numOfOcc +1;
+        int numOfOcc = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == value) {
+                numOfOcc = numOfOcc + 1;
             }
 
         }
-
-//        List asList = Arrays.asList(array);
-//        Set<String> mySet = new HashSet<String>(asList);
-//        int numOfOcc=0;
-//        for(String s: mySet){
-         //   System.out.println(s + " " + Collections.frequency(asList,s));
-//        }
         return numOfOcc;
     }
 
@@ -181,14 +142,14 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-    // Converting array to arrayList
-    List<String> arrList = new ArrayList<String>(Arrays.asList(array));
+        // Converting array to arrayList
+        List<String> arrList = new ArrayList<String>(Arrays.asList(array));
 
-    // Using remove mtd of arrayList to remove the element
+        // Using remove mtd of arrayList to remove the element
         arrList.remove(valueToRemove);
 
-    // Converting arrayList to array before returning
-    array = arrList.toArray(new String[0]);
+        // Converting arrayList to array before returning
+        array = arrList.toArray(new String[0]);
         return array;
     }
 
@@ -197,30 +158,19 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
+        // Converting array to arrayList
+        ArrayList<String> newList = new ArrayList<String>();
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] != array[i + 1]) {
+                newList.add(array[i]);
+            }
+        }
+            newList.add(array[array.length - 1]);
 
-////        // Converting array to arrayList
-//        List<String> newList = new ArrayList<String>(Arrays.asList(array));
-//
-//        newList.add(array[0]);
-//        for (int i=1; i< array.length-1; i++){
-//            if (array[i-1] != array[i]){
-//                newList.add(array[i]);
-//            }
-//        }
         // Converting arrayList to array before returning
-//        //array = newList.toArray(new String[0]);
-//        String[] newArr = new String[newList.size()];
-//        newList.toArray(newArr);
-//        String [] arrTemp = {""};
-//        for (int i=0;i< array.length-1; i++){
-//            for (int j = i+1; j< array.length; i++){
-//                if (array[i] == array[j] ){
-//                    arrTemp[i] = array[i];
-//                }
-//            }
-//        }
-
-        return array;
+        String[] newArr = new String[newList.size()];
+        newList.toArray(newArr);
+        return newArr;
     }
 
     /**
@@ -229,8 +179,27 @@ public class StringArrayUtils {
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
 
-        return null;
+        List<String> newArr = new ArrayList<String>();
+        String lastCheck = "";
+        String lastMatch = "";
+        for (String s : array) {
+            newArr.add(s);
+        }
+        for (int i = 0; i < newArr.size(); i++) {
+            boolean toSet = false;
+            if ((newArr.get(i) == lastCheck || newArr.get(i) == lastMatch) && i - 1 >= 0) {
+                toSet = true;
+                lastMatch = newArr.get(i);
+            }
+            lastCheck = newArr.get(i);
+            if (toSet) {
+                newArr.set(i - 1, newArr.get(i - 1) + newArr.get(i));
+                toSet = false;
+                newArr.remove(i);
+                i = 0;
+            }
+        }
+        String[] abbb = newArr.toArray(new String[newArr.size()]);
+        return abbb;
     }
-
-
 }
